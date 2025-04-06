@@ -22,7 +22,6 @@ async def hello(ctx):
 
 @client.command(pass_context = True)
 async def rteam(ctx, arg):
-  await ctx.send(arg)
   teams = test(arg)
   await ctx.send(teams[0])
   await ctx.send(teams[1])
