@@ -23,7 +23,15 @@ async def hello(ctx):
 @client.command(pass_context = True)
 async def rteam(ctx, arg):
   teams = test(arg)
-  await ctx.send(teams[0])
-  await ctx.send(teams[1])
+
+  team1 = "\n".join(teams[0])
+  team2 = "\n".join(teams[1])
+
+  embed = discord.Embed(title = "League of Legends Teams")
+  embed.add_field(name="Red Team:", value=team1, inline=False)
+  embed.add_field(name="Blue Team:", value=team2, inline=False)
+
+  await ctx.send(embed=embed)
+
 
 client.run(os.getenv('DISCORD_TOKEN'))
