@@ -1,10 +1,13 @@
 import discord
 import os
+import sqlite3
 from discord.ext import commands
 from dotenv import load_dotenv
 from func import *
 
 load_dotenv()
+con = sqlite3.connect("discord.db")
+cur = con.cursor()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -18,7 +21,7 @@ async def on_ready():
 
 @client.command()
 async def hello(ctx):
-  await ctx.send("Hello")
+  await ctx.send("Hello!")
 
 @client.command(pass_context = True)
 async def rteam(ctx, arg):
